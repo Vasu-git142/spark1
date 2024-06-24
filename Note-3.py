@@ -67,7 +67,7 @@ from pyspark.sql.functions import *
 # COMMAND ----------
 
 # MAGIC %md 
-# MAGIC ## fillna or na.fil
+# MAGIC ## fillna or na.fill
 
 # COMMAND ----------
 
@@ -83,6 +83,94 @@ columns=["Employee","department","salary","age","bonus"]
 df = spark.createDataFrame(simpleData,columns)
 display(df)
 df.printSchema()
+
+# COMMAND ----------
+
+help(df.fillna)
+
+# COMMAND ----------
+
+df.fillna(30000).show()
+
+# COMMAND ----------
+
+display(df.fillna(value=32 , subset=['age']))
+
+# COMMAND ----------
+
+display(df.fillna(value=18000 ,subset =["bonus"]))
+
+# COMMAND ----------
+
+display(df.fillna({"age" : 27,"bonus" : 15000}))
+
+# COMMAND ----------
+
+# MAGIC %md 
+# MAGIC ### dropna or na.drop
+
+# COMMAND ----------
+
+help(df.dropna)
+
+# COMMAND ----------
+
+simpleData = [("james","sales","NY",None,22,11000),
+              ("john",None,"NY",12000,25,13000),
+              (None,"finance",None,14000,27,15000),
+              ("jaya","sales","Ny",None,29,None),
+              ("vasu",None,"CA",14000,None,15000),
+              (None,"engineering","NY",14000,27,15000),
+              (None,None,None,None,None,None)
+            ]
+schema = ["name","designation","city","salary","age","bonus"]
+df =spark.createDataFrame(data=simpleData,schema=schema)
+
+# COMMAND ----------
+
+display(df)
+
+# COMMAND ----------
+
+display(df.dropna(how="all"))
+
+# COMMAND ----------
+
+display(df.dropna(thresh=4))
+
+# COMMAND ----------
+
+display(df.na.drop(subset=["age", "name"]))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Handling Null With Replace
+
+# COMMAND ----------
+
+simpleData = [("james","sales","NY",None,22,11000),
+              ("john",None,"NY",12000,25,13000),
+              ("","finance",None,14000,27,15000),
+              ("jaya","sales","Ny",None,29,None),
+              ("vasu",None,"CA",14000,None,15000),
+              ("","engineering","NY",14000,27,15000)
+              
+            ]
+schema = ["name","designation","city","salary","age","bonus"]
+df =spark.createDataFrame(data=simpleData,schema=schema)
+
+# COMMAND ----------
+
+display(df)
+
+# COMMAND ----------
+
+df.replace("","vasu").show()
+
+# COMMAND ----------
+
+display(df.replace(22,32))
 
 # COMMAND ----------
 
