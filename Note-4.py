@@ -39,6 +39,11 @@ from pyspark.sql.functions import *
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ### Concat the Columns
+
+# COMMAND ----------
+
 df1=df.withColumn("variable_name&variable_category", concat("variable_name",lit (" - "), "variable_category"))
 
 # COMMAND ----------
@@ -52,6 +57,35 @@ display(df1.drop("variable_name","variable_category"))
 # COMMAND ----------
 
 display(df1.withColumn("chemical_name",lit("HCL")).withColumn("current_time",current_timestamp()))
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ### Write the csv file
+
+# COMMAND ----------
+
+df1.write.csv("dbfs:/Filterstore/csv/df1/output")
+
+# COMMAND ----------
+
+dfcheck= spark.read.csv("dbfs:/Filterstore/csv/df1/output/part-00000-tid-7709896595430972088-d65271f1-f335-481d-928f-d3ddef49890d-138-1-c000.csv")
+
+# COMMAND ----------
+
+display(dfcheck)
+
+# COMMAND ----------
+
+df.write.option("header", True).mode("overwrite").csv("dbfs:/FileStore/csv/output")
+
+# COMMAND ----------
+
+dfcheck=spark.read.csv("/FileStore/csv/output")
+
+# COMMAND ----------
+
+display(dfcheck)
 
 # COMMAND ----------
 
