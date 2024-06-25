@@ -65,4 +65,9 @@ df.write.saveAsTable("fruit")
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC select * from fruit
+
+# COMMAND ----------
+
 
