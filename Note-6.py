@@ -1,6 +1,6 @@
 # Databricks notebook source
 # MAGIC %md
-# MAGIC ## Raw data to table
+# MAGIC ## Json file convert into parquet file
 
 # COMMAND ----------
 
@@ -36,7 +36,33 @@ from pyspark.sql.functions import current_timestamp
 
 # COMMAND ----------
 
-display(df2.withColumn("current_time", current_timestamp()))
+df3=df2.withColumn("current_time", current_timestamp())
+
+# COMMAND ----------
+
+display(df3)
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ###  write DF in parquet
+
+# COMMAND ----------
+
+df3.write.parquet("dbfs:/FileStore/tables/json/out_put1")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ###  verify your parquet file
+
+# COMMAND ----------
+
+df4=spark.read.parquet("dbfs:/FileStore/tables/json/out_put1")
+
+# COMMAND ----------
+
+display(df4)
 
 # COMMAND ----------
 
