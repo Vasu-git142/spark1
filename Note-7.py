@@ -72,4 +72,5 @@ df2.write.saveAsTable("csv")
 
 # COMMAND ----------
 
-
+# MAGIC %md
+# MAGIC ### parquet 
