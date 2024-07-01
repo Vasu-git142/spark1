@@ -31,4 +31,15 @@
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC create table people4(
+# MAGIC   id INT,
+# MAGIC   firstname STRING,
+# MAGIC   lastname STRING,
+# MAGIC   gender STRING,
+# MAGIC   salary INT
+# MAGIC ) LOCATION "dbfs:/user/hive/warehouse/externaldb"
+
+# COMMAND ----------
+
 
