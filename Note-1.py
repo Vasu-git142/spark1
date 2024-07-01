@@ -36,10 +36,6 @@ df.printSchema
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
 df.printSchema()
 
 # COMMAND ----------
