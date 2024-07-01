@@ -10,7 +10,7 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC create table people3(
+# MAGIC create table people(
 # MAGIC   id INT,
 # MAGIC   firstname STRING,
 # MAGIC   lastname STRING,
@@ -22,12 +22,18 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC select *from people3
+# MAGIC select *from people
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC describe extended people3
+# MAGIC describe extended people
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC drop table people
+# MAGIC
 
 # COMMAND ----------
 
