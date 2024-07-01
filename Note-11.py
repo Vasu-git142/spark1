@@ -32,6 +32,16 @@
 # COMMAND ----------
 
 # MAGIC %sql
+# MAGIC insert into people values(1,"vasu","d","f",23,20000)
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select *from people
+
+# COMMAND ----------
+
+# MAGIC %sql
 # MAGIC drop table people
 # MAGIC
 
@@ -55,6 +65,22 @@
 
 # MAGIC %sql
 # MAGIC describe extended people4
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC
+# MAGIC INSERT INTO people4 VALUES (1, 'vasu', 'd', 'f',20000)
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC drop table people4
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC insert into people4 values(1,"vasu","d","f",20000)
 
 # COMMAND ----------
 
