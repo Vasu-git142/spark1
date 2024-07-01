@@ -31,6 +31,11 @@
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ###external table we specify the location
+
+# COMMAND ----------
+
 # MAGIC %sql
 # MAGIC create table people4(
 # MAGIC   id INT,
@@ -39,6 +44,11 @@
 # MAGIC   gender STRING,
 # MAGIC   salary INT
 # MAGIC ) LOCATION "dbfs:/user/hive/warehouse/externaldb"
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC describe extended people4
 
 # COMMAND ----------
 
