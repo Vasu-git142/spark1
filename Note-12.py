@@ -101,4 +101,29 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/00000000
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC update lake1.people_1
+# MAGIC set  salary=salary+6000
+# MAGIC where id=2
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select * from people_1
+
+# COMMAND ----------
+
+df=spark.read.table("people_1").show()
+
+# COMMAND ----------
+
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+
+# COMMAND ----------
+
+df.write.parquet("dbfs:/user/hive/warehouse/lake1/output")
+
+# COMMAND ----------
+
 
