@@ -137,4 +137,29 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/0000000000
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC delete from lake1.people where id=7
+
+# COMMAND ----------
+
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC update lake1.people
+# MAGIC set  salary=salary+9000
+# MAGIC where id=4
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select * from lake1.people
+
+# COMMAND ----------
+
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/
+
+# COMMAND ----------
+
 
