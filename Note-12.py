@@ -162,4 +162,9 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/0000000000
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC select * from lake1.people version as of 6 
+
+# COMMAND ----------
+
 
