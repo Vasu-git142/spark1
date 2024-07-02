@@ -76,4 +76,29 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/00000000
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC describe history people_1
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO people_1 (id, firstname, lastname, gender, age, salary) VALUES
+# MAGIC (7, 'jaya', 'v', 'M', 24, 20000),(8,'lake','v','F',23,22000);
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select * from people_1
+
+# COMMAND ----------
+
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC describe history people_1
+
+# COMMAND ----------
+
 
