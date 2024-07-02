@@ -15,7 +15,7 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC create or replace table  lake1.people_1(
+# MAGIC create or replace table  lake1.people(
 # MAGIC   id INT,
 # MAGIC   firstname STRING,
 # MAGIC   lastname STRING,
@@ -27,7 +27,7 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC describe extended people_1
+# MAGIC describe extended lake1.people
 
 # COMMAND ----------
 
@@ -43,7 +43,7 @@
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC INSERT INTO people_1 (id, firstname, lastname, gender, age, salary) VALUES
+# MAGIC INSERT INTO  lake1.people (id, firstname, lastname, gender, age, salary) VALUES
 # MAGIC (1, 'sachin', 'd', 'M', 22, 18000),
 # MAGIC (2, 'dhoni', 'a', 'M', 32, 19000),
 # MAGIC (3, 'divi', 'c', 'F', 25, 20000),
@@ -55,7 +55,7 @@
 # COMMAND ----------
 
 # MAGIC %sql 
-# MAGIC select * from people_1
+# MAGIC select * from lake1.people
 
 # COMMAND ----------
 
@@ -64,31 +64,31 @@
 
 # COMMAND ----------
 
-# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/
 
 # COMMAND ----------
 
-dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/00000000000000000000.json")
+dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/00000000000000000000.json")
 
 # COMMAND ----------
 
-dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/00000000000000000001.json")
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC describe history people_1
+dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/00000000000000000001.json")
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC INSERT INTO people_1 (id, firstname, lastname, gender, age, salary) VALUES
+# MAGIC describe history lake1.people
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC INSERT INTO lake1.people (id, firstname, lastname, gender, age, salary) VALUES
 # MAGIC (7, 'jaya', 'v', 'M', 24, 20000),(8,'lake','v','F',23,22000);
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC select * from people_1
+# MAGIC select * from lake1.people
 
 # COMMAND ----------
 
@@ -97,19 +97,19 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/00000000
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC describe history people_1
+# MAGIC describe history lake1.people
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC update lake1.people_1
+# MAGIC update lake1.people
 # MAGIC set  salary=salary+6000
-# MAGIC where id=2
+# MAGIC where id=3
 
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC select * from people_1
+# MAGIC select * from lake1.people
 
 # COMMAND ----------
 
