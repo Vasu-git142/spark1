@@ -92,7 +92,7 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/0000000000
 
 # COMMAND ----------
 
-# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people_1/_delta_log/
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/
 
 # COMMAND ----------
 
@@ -104,7 +104,7 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/0000000000
 # MAGIC %sql
 # MAGIC update lake1.people
 # MAGIC set  salary=salary+6000
-# MAGIC where id=3
+# MAGIC where id=7
 
 # COMMAND ----------
 
@@ -113,16 +113,27 @@ dbutils.fs.head("dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/0000000000
 
 # COMMAND ----------
 
-df=spark.read.table("people_1").show()
+# MAGIC %sql
+# MAGIC describe history lake1.people
 
 # COMMAND ----------
 
-from pyspark.sql.functions import *
-from pyspark.sql.types import *
+# MAGIC %fs ls dbfs:/user/hive/warehouse/lake1.db/people/_delta_log/
 
 # COMMAND ----------
 
-df.write.parquet("dbfs:/user/hive/warehouse/lake1/output")
+# MAGIC %sql
+# MAGIC delete from lake1.people where id=8
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select * from lake1.people
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC describe history lake1.people
 
 # COMMAND ----------
 
