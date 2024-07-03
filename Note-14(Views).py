@@ -78,4 +78,18 @@ df.createOrReplaceTempView("bikesview")
 
 # COMMAND ----------
 
+df.createGlobalTempView("globalview")
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC show views in global_temp
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC select *from global_temp.globalview
+
+# COMMAND ----------
+
 
