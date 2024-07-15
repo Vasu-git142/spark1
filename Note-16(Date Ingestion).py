@@ -18,3 +18,17 @@ spark.readStream
 .writeStream
  .option("checkpointLocation", <checkpoint_directory>)
  .table(<table_name>)
+
+# COMMAND ----------
+
+input = "dbfs:/FileStore/tables/Streamdata/input"
+
+# COMMAND ----------
+
+spark.readStream
+.format("cloudFiles")
+.option("cloudFiles.format", "csv")
+.load("input")
+.writeStream
+ .option("checkpointLocation", <checkpoint_directory>)
+ .table(<table_name>)
